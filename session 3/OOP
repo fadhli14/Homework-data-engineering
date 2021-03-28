@@ -1,0 +1,39 @@
+#Dengan OOP
+
+class customer:
+	nama_toko = "sejahtera"
+
+	def __init__(self, nama, jumlah):
+		self.nama = nama
+		self.jumlah = jumlah
+
+	def transaksi(self, barang):
+		print(self.nama, "membeli", barang, self.jumlah)
+
+	@staticmethod
+	def tokofavorit():
+		print(customer.nama_toko, "sangat laku")
+
+	@classmethod
+	def tingkat_penjualan(cls):
+		print(cls.tokofavorit, "naik penjualannya")
+
+class TokoA(customer):
+	def transaksi(self, barang):
+		print(self.nama, "sedang menjual", barang, self.jumlah)
+
+class TokoB(customer):
+	def transaksi (self, barang=None):
+		if barang == None:
+			super().transaksi ("HP")
+		else:
+			print(self.nama, "banyak membeli", barang, self.jumlah)
+
+
+TokoA = TokoA("Budi", 10)
+TokoB = TokoB("Rani", 100)
+
+TokoA.transaksi("permen")
+TokoA.tokofavorit()
+TokoB.transaksi()
+TokoB.transaksi("audio")
